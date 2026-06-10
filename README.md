@@ -1,26 +1,56 @@
 # d-slop
 
-A portable skill for Codex and Claude Code that edits prose toward a concrete, plainspoken style.
+Clean up AI-sounding knowledge work.
 
-Use it when a draft sounds inflated, generic, or too much like model-written copy. The skill keeps the useful idea, then removes filler, stock transitions, fake significance, and padded phrasing.
+`d-slop` is a small skill for Codex and Claude Code. It helps turn drafts, notes, summaries, posts, briefs, and explanations into writing that sounds more direct, concrete, and human.
 
-## Plain-English Version
+The name is blunt on purpose: it removes the slop. Not the idea. The slop.
 
-`d-slop` is a writing cleanup skill.
+## What It Does
 
-It helps Codex or Claude Code take a draft that sounds too polished, vague, or AI-written and make it sound more direct. It does not try to make the writing fancy. It cuts the mush.
+AI drafts often come back smooth but mushy. They explain too much, lean on vague phrases, and make ordinary work sound more dramatic than it is.
 
-Use it for:
+`d-slop` pushes the writing back toward the real thing:
 
-- announcements
-- bios
-- posts
-- explanations
+- specific facts
+- plain language
+- shorter sentences when they help
+- fewer stock transitions
+- less fake importance
+- more useful detail
+
+This is for knowledge work: the daily writing people do when they are trying to explain, decide, teach, summarize, share, or persuade.
+
+## Before And After
+
+Before:
+
+> This initiative highlights the importance of fostering collaboration and underscores the pivotal role of experimentation in shaping the future of AI-enabled work.
+
+After:
+
+> We ran the workflow with real notes, found where the draft got vague, and rewrote the parts someone would actually have to use.
+
+That is the point. Less ceremony. More signal.
+
+## Good Uses
+
+Use `d-slop` for:
+
+- meeting summaries
+- project updates
+- LinkedIn posts
 - workshop copy
-- public project notes
-- anything that sounds too generic
+- internal notes
+- public bios
+- announcement drafts
+- course or event descriptions
+- explanations of messy ideas
+- AI-generated drafts that sound too generic
 
-You can ask for it in normal language:
+## How To Ask For It
+
+You can ask in normal language:
 
 ```text
 Use d-slop on this.
@@ -34,33 +64,26 @@ Make this sound less AI-written.
 Keep the facts, but make the writing more concrete.
 ```
 
-## When To Use It
-
-Ask for it when you want writing that is:
-
-- concise
-- specific
-- calm
-- practical
-- human without being casual for its own sake
-
-Example prompts:
-
 ```text
-Use d-slop to rewrite this announcement.
+Clean this up for a smart nontechnical reader.
 ```
 
-```text
-Make this less generic and remove AI vocabulary.
-```
+## What It Will Not Do
 
-```text
-Edit this into a calm, concrete explanation with no filler.
-```
+`d-slop` should not:
+
+- make the writing edgy just to be edgy
+- turn everything casual
+- strip out needed nuance
+- invent facts or examples
+- add a motivational ending
+- make simple work sound bigger than it is
+
+The goal is not a "brand voice." The goal is usable writing.
 
 ## Install
 
-Clone the repo, then install into Codex, Claude Code, or both:
+If you use Codex or Claude Code, copy and paste these commands:
 
 ```bash
 git clone https://github.com/daniel-p-green/d-slop.git
@@ -68,35 +91,45 @@ cd d-slop
 ./scripts/install-skill.sh --target both
 ```
 
-After installing, restart or reload Codex or Claude Code so the new skill is picked up.
+Then restart or reload Codex or Claude Code so the new skill is picked up.
 
-Custom skill directories are supported:
+If you do not usually use Terminal, ask Codex or Claude Code to install it from this repo:
 
-```bash
-CODEX_SKILLS_DIR="$HOME/.codex/skills" \
-CLAUDE_SKILLS_DIR="$HOME/.claude/skills" \
-./scripts/install-skill.sh --target both
+```text
+Install the d-slop skill from https://github.com/daniel-p-green/d-slop
 ```
 
-## Layout
+If you only want one:
+
+```bash
+./scripts/install-skill.sh --target codex
+```
+
+```bash
+./scripts/install-skill.sh --target claude
+```
+
+## For Maintainers
+
+What gets installed:
+
+The installer adds the same skill to Codex and Claude Code:
 
 ```text
 skill/d-slop/SKILL.md
 skill/d-slop/references/style-rules.md
 skill/d-slop/examples/rewrite-examples.md
-scripts/check.sh
-scripts/install-skill.sh
 ```
 
-The same `SKILL.md` works as a local Codex skill and a local Claude Code skill.
+The skill includes the main workflow, a longer list of style rules, and a few before/after examples.
 
-## Check
+To verify the package:
 
 ```bash
 ./scripts/check.sh
 ```
 
-The check script verifies the required files, frontmatter, install script syntax, public docs, and local-path hygiene.
+That check confirms the skill files, installer, public docs, and basic repo hygiene.
 
 ## License
 
