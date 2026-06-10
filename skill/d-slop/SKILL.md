@@ -1,10 +1,10 @@
 ---
-name: grounded-writing-style
+name: d-slop
 description: This skill should be used when the user asks to rewrite, edit, draft, or critique prose so it sounds grounded, concrete, less generic, less AI-written, plainspoken, concise, calm, or free of filler, stock transitions, inflated significance, and AI vocabulary.
 version: 0.1.0
 ---
 
-# Grounded Writing Style
+# d-slop
 
 Use this skill to write or edit prose that feels like a person with domain knowledge wrote it. Keep the work concrete, sparse, and useful. Remove generic structures, inflated claims, moralizing, and model-like vocabulary.
 

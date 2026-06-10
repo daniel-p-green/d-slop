@@ -1,3 +1,3 @@
-display_name: Grounded Writing Style
+display_name: d-slop
 short_description: Rewrite prose so it is concrete, calm, concise, and less AI-sounding.
 default_prompt: Rewrite this in a grounded, specific style. Remove filler, inflated meaning, stock transitions, and AI vocabulary.

@@ -2,7 +2,8 @@
 set -euo pipefail
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-source_dir="$repo_root/skill/grounded-writing-style"
+source_dir="$repo_root/skill/d-slop"
+old_source_dir="$repo_root/skill/grounded-writing-style"
 target="both"
 force=0
 copy_mode=0
@@ -11,7 +12,7 @@ usage() {
   cat <<'USAGE'
 Usage: ./scripts/install-skill.sh [--target codex|claude|both] [--force] [--copy]
 
-Installs grounded-writing-style into local skill directories.
+Installs d-slop into local skill directories.
 
 Environment:
   CODEX_SKILLS_DIR   Defaults to $HOME/.codex/skills
@@ -19,7 +20,7 @@ Environment:
 
 Options:
   --target   Install target. Default: both
-  --force    Replace an existing grounded-writing-style skill at the target
+  --force    Replace an existing d-slop skill at the target
   --copy     Copy files instead of creating a symlink
 USAGE
 }
@@ -56,9 +57,15 @@ done
 install_one() {
   local label="$1"
   local skills_dir="$2"
-  local dest="$skills_dir/grounded-writing-style"
+  local dest="$skills_dir/d-slop"
+  local old_dest="$skills_dir/grounded-writing-style"
 
   mkdir -p "$skills_dir"
+
+  if [[ -L "$old_dest" && "$(readlink "$old_dest")" == "$old_source_dir" ]]; then
+    rm "$old_dest"
+    printf 'Removed old %s skill link: %s\n' "$label" "$old_dest"
+  fi
 
   if [[ -e "$dest" || -L "$dest" ]]; then
     if [[ "$force" -ne 1 ]]; then

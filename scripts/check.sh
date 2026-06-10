@@ -2,7 +2,7 @@
 set -euo pipefail
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-skill_dir="$repo_root/skill/grounded-writing-style"
+skill_dir="$repo_root/skill/d-slop"
 skill_file="$skill_dir/SKILL.md"
 
 fail() {
@@ -24,7 +24,7 @@ require_file "$skill_dir/agents/openai.yaml"
 require_file "$repo_root/scripts/install-skill.sh"
 
 grep -q '^---$' "$skill_file" || fail "SKILL.md missing YAML frontmatter delimiter"
-grep -q '^name: grounded-writing-style$' "$skill_file" || fail "SKILL.md missing expected name"
+grep -q '^name: d-slop$' "$skill_file" || fail "SKILL.md missing expected name"
 grep -q '^description: .*less AI-written' "$skill_file" || fail "SKILL.md description lacks concrete trigger language"
 grep -q '## Workflow' "$skill_file" || fail "SKILL.md missing workflow"
 grep -q 'references/style-rules.md' "$skill_file" || fail "SKILL.md does not reference style-rules.md"
@@ -41,8 +41,8 @@ scan_targets=(
   "$repo_root/scripts/install-skill.sh"
 )
 
-if grep -RInE '/Users/danielgreen|TODO|REPLACE_ME|YOUR_' "${scan_targets[@]}" >/tmp/grounded-writing-style-check.txt; then
-  cat /tmp/grounded-writing-style-check.txt >&2
+if grep -RInE '/Users/danielgreen|TODO|REPLACE_ME|YOUR_' "${scan_targets[@]}" >/tmp/d-slop-check.txt; then
+  cat /tmp/d-slop-check.txt >&2
   fail "public files contain local paths or placeholders"
 fi
 
@@ -52,4 +52,4 @@ bash -n "$repo_root/scripts/check.sh"
 [[ -x "$repo_root/scripts/check.sh" ]] || fail "scripts/check.sh must be executable"
 [[ -x "$repo_root/scripts/install-skill.sh" ]] || fail "scripts/install-skill.sh must be executable"
 
-printf 'OK: grounded-writing-style skill package validated\n'
+printf 'OK: d-slop skill package validated\n'
